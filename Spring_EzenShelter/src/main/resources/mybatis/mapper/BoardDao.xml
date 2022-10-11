@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ezen.p2.dao.IBoardDao">
+	<resultMap  id="boardMap" type="java.util.HashMap"></resultMap>
+	<resultMap  id="replyMap" type="java.util.HashMap"></resultMap>
+	
+	<select id="boardList" statementType="CALLABLE" parameterType="java.util.HashMap" >
+		{
+			CALL boardList( 
+				#{startNum},#{endNum},
+				#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=boardMap}
+			)
+		}
+	</select>
+	
+	<select id="boardList1" statementType="CALLABLE" parameterType="java.util.HashMap" >
+		{
+			CALL boardList1( 
+				#{startNum},#{endNum},#{key},
+				#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=boardMap}
+			)
+		}
+	</select>
+	
+	<select id="boardList2" statementType="CALLABLE" parameterType="java.util.HashMap" >
+		{
+			CALL boardList2( 
+				#{startNum},#{endNum},#{key},
+				#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=boardMap}
+			)
+		}
+	</select>
+	
+	<select id="boardList3" statementType="CALLABLE" parameterType="java.util.HashMap" >
+		{
+			CALL boardList3( 
+				#{startNum},#{endNum},#{key},
+				#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=boardMap}
+			)
+		}
+	</select>
+	
+	<select id="boardGetAllCount" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL boardGetAllCount( 
+				#{tableName},
+				#{cnt , mode=OUT, jdbcType=INTEGER}
+			)	  
+		{
+	</select>
+	
+	<select id="boardGetAllCount1" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL boardGetAllCount1(
+				#{tableName},#{key},
+				#{cnt , mode=OUT, jdbcType=INTEGER}
+			)
+		}
+	</select>
+	
+	<select id="boardGetAllCount2" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL boardGetAllCount2(
+				#{tableName},#{key},
+				#{cnt , mode=OUT, jdbcType=INTEGER}
+			)
+		}
+	</select>
+	
+	<select id="boardGetAllCount3" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL boardGetAllCount3(
+				#{tableName},#{key},
+				#{cnt , mode=OUT, jdbcType=INTEGER}
+			)
+		}
+	</select>
+	
+	<insert id="insertBoard" parameterType="com.ezen.p2.dto.BoardVO">
+		insert into board(b_num,id,title,b_content,b_image)
+		values(seq_board_seq.nextVal,#{id},#{title},#{b_content},#{b_image})
+	</insert>
+	
+	<update id="plusCountOne">
+		update board set b_count=b_count+1 where b_num=#{param1}
+	</update>
+	
+	<select id="getBoardOne" resultType="com.ezen.p2.dto.BoardVO">
+		select*from board where b_num=#{param1}
+	</select>
+	
+	<select id="getReply" resultType="com.ezen.p2.dto.ReplyVO">
+		select*from reply where b_num=#{param1}
+	</select>
+	
+	<update id="updateBoard" parameterType="com.ezen.p2.dto.BoardVO">
+		update board set title=#{title},b_content=#{b_content},b_image=#{b_image} 
+		where b_num=#{b_num}
+	</update>
+	
+	<insert id="insertReply" parameterType="com.ezen.p2.dto.ReplyVO">
+		insert into reply(r_num,r_content,id,b_num)
+		values(reply_seq.nextVal,#{r_content},#{id},#{b_num})
+	</insert>
+	
+	<delete id="delReply">
+		delete from reply where r_num=#{param1}
+	</delete>
+	
+	<delete id="deleteBoard">
+		delete from board where b_num=#{param1}
+	</delete>
+	
+	<update id="updateReply">
+		update reply set r_content=#{content} where r_num=#{r_num}
+	</update>
+
+</mapper>
