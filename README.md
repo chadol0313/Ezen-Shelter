@@ -21,6 +21,8 @@
  + Apache Tomcat 9
  + Oracle XE 11g
  ## 3. 프로젝트 기능 소개
+ ![ERD](https://user-images.githubusercontent.com/115128823/195017521-8e5c8a5e-3996-43a2-98a8-94ecbfe5db03.jpg)
+ 
  + <유기동물>
     + 각 지역,종류별 유기동물 리스트업
     + 선택한 유기동물 상세정보 DB조회
@@ -49,6 +51,6 @@
     + SHOP 용품 추가
     + 연계 보호소 등록
     + 메인배너 등록
-
-   
+## 4. 담당기능 요약
+  + [PDF](https://drive.google.com/file/d/1H_2cWuqbTyeWTTjuMFHTGxpQOhAxfxse/view?usp=sharing)
  
