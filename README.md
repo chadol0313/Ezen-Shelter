@@ -20,7 +20,6 @@
   - Mybatis
   - Spring tool suite 3.9.17
   - Apache Tomcat 9
-  - MySQL 5.7
   - Oracle 11g
 #### `Front-end`
   - HTML5 & CSS3
